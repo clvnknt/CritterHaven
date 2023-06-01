@@ -1,5 +1,5 @@
 <?php
-$bg_image = 'images/bg_1.png';
+$bg_image = 'public/images/background.png';
 ?>
 <style>
     body {
@@ -61,7 +61,7 @@ $bg_image = 'images/bg_1.png';
                     </div>
                 <?php endwhile; ?>
                 <div class="d-flex w-100 justify-content-between mb-2 py-2 border-bottom">
-                    <div class="col-10 d-flex justify-content-end"><h4>Total Price (PHP):</h4></div>
+                    <div class="col-10 d-flex justify-content-end"><h4>Total Price:</h4></div>
                     <div class="col d-flex justify-content-end"><h4 id="grand-total">-</h4></div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <?php
-$bg_image = 'images/bg_1.png';
+$bg_image = 'public/images/background.png';
 ?>
 <style>
     body {
@@ -50,7 +50,7 @@ $bg_image = 'images/bg_1.png';
             <div class="col-md-6 bg-white">
                 <!-- <div class="small mb-1">SKU: BST-498</div> -->
                 <h1 class="display-5 fw-bolder border-bottom border-primary pb-1"><?php echo $title ?></h1>
-                <p class="m-0"><small>By: <?php echo $brand ?></small></p>
+                <p class="m-0"><small><?php echo $brand ?></small></p>
                 <div class="fs-5 mb-5">
                 &#8369; <span id="price"><?php echo number_format($inv[0]['price']) ?></span>
                 <br>

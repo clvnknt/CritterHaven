@@ -1,5 +1,5 @@
 <?php
-$bg_image = 'images/bg_1.png';
+$bg_image = 'public/images/background.png';
 ?>
 <style>
     body {
@@ -39,7 +39,7 @@ $bg_image = 'images/bg_1.png';
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="" class="control-label">Default Delivery Address</label>
+                                <label for="" class="control-label">Delivery Address</label>
                                 <textarea class="form-control form" rows='3' name="default_delivery_address"><?php echo $_settings->userdata('default_delivery_address') ?></textarea>
                             </div>
                             <div class="form-group">

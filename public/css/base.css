@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
 :root {
   --light-grey: #F6F9FC;
   --dark-terminal-color: #0A2540;
-  --accent-color: #635BFF;
+  --accent-color: #24ad76;
   --radius: 3px;
 }
 
 body {
   padding: 20px;
-  font-family: 'Roboto, sans-serif';
+  font-family: 'Montserrat', sans-serif; /* Change the font-family to Montserrat */
   display: flex;
   justify-content: center;
   font-size: 1.2em;
@@ -17,7 +17,7 @@ body {
 }
 
 main {
-  width: 480px;
+  width: 1000px;
 }
 
 form > * {
@@ -68,21 +68,22 @@ a {
 }
 
 #payment-form {
-  border: #0f121f solid 1px;
+  border: #ffffff solid 1px;
   border-width: 2px;
-  border-radius: var(--radius);
+  border-radius: 10px; /* Set the border radius to 10px for rounded edges */
   padding: 20px;
   margin: 20px 0;
   box-shadow: 0 30px 50px -20px rgb(50 50 93 / 25%), 0 30px 60px -30px rgb(0 0 0 / 30%);
+  background-color: #333333; /* Set the background color to white */
 }
 
 #messages {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New';
+  font-family: 'Montserrat', sans-serif; /* Change the font-family to Montserrat */
   display: none; /* hide initially, then show once the first message arrives */
-  background-color: #0A253C;
-  color: #00D924;
+  background-color: #ffffff;
+  color: #c71515;
   padding: 20px;
   margin: 20px 0;
   border-radius: var(--radius);
-  font-size:0.7em;
+  font-size: 0.7em;
 }

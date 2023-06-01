@@ -1,3 +1,12 @@
+<?php
+$bg_image = 'public/images/background.png';
+?>
+<style>
+    body {
+        background-image: url(<?php echo $bg_image; ?>);
+        /* additional background styles */
+    }
+</style>
 <!-- Header-->
 <header class="bg-dark py-5" id="main-header">
     <div class="container px-4 px-lg-5 my-5">
@@ -5,7 +14,7 @@
             <h1 class="display-4 fw-bolder">CritterHaven</h1>
             <p class="lead fw-normal text-white mb-0">"Pamper your furry friends with CritterHaven's high-quality accessories for dogs and cats. Shop now and show your pets some love!"</p>
             <br>
-            <a href=".?p=products" class="btn btn-primary" role="button">Buy Now!</a>
+            <a href=".?p=products" class="btn btn-primary" role="button">Shop Now!</a>
         </div>
     </div>
 </header>
@@ -16,7 +25,7 @@
         <div class="row gx-4 gx-lg-5 row-cols-md-3 row-cols-xl-4">
             <div class="col-12">
                 <!-- Products header -->
-                <h2 class="fw-bolder">Products</h2>
+                <h2 class="fw-bolder">Some Accessories</h2>
             </div>
         </div>
 

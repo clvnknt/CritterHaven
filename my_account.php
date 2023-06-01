@@ -1,5 +1,5 @@
 <?php
-$bg_image = 'images/bg_1.png';
+$bg_image = 'public/images/background.png';
 ?>
 <style>
     body {

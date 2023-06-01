@@ -161,9 +161,9 @@ try {
       });
     </script>
   </head>
-  <body style="background-color:#1A1F36;">
+  <body style="background-color:#f7f4f2;">
     <main>
-      <h1 style="color: white;"><center>Payment</center></h1>
+      <h1 style="color: black;"><center>CritterHaven: <Br>Pay With Stripe</center></h1>
 
       <form id="payment-form" method="POST" >
 
@@ -172,23 +172,32 @@ try {
         <input type="hidden" name="delivery_address" value="<?php echo $delivery_address ?>">
         <input type="hidden" name="paid" value="<?php echo $paid ?>">
 
-        <label style="color: white;" for="payment-element">User Credentials</label>
+        <label style="color: white;" for="payment-element">Contact Information</label>
         <div id="link-authentication-element">
         <!--Stripe.js injects the Link Authentication Element-->
         </div>
+        <label style="color: white;" for="payment-element">Billing Address</label>
         <div id="address-element">
         <!-- Elements will create form elements here -->
         </div>
+        <label style="color: white;" for="payment-element">Card Information</label>
         <div id="payment-element">
           <!-- Elements will create input elements here -->
         </div>
 
         <!-- We'll put the error messages in this element -->
         <div id="payment-errors" role="alert"></div>
-          <button type="submit" id="submit" style="width: 437px;">
-            Pay
-          </button>
-          <center><a href="../index.php?page=cart">Back</a></center>
+        <center>
+        <button type="submit" id="submit" style="width: 437px;">
+  Pay Now
+</button>
+</center>
+<center>
+<a href="../index.php?p=checkout" style="background-color: red; color: white; width: 400px; display: inline-block; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Back</a>
+
+</center>
+
+
       </form>
 
       <div id="messages" role="alert" style="display: none;"></div>

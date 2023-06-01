@@ -1,5 +1,5 @@
 <?php
-$bg_image = 'images/bg_1.png';
+$bg_image = 'public/images/background.png';
 ?>
 <style>
     body {
@@ -13,13 +13,13 @@ $sub_title = "";
 if(isset($_GET['c']) && isset($_GET['s'])){
     $cat_qry = $conn->query("SELECT * FROM categories where md5(id) = '{$_GET['c']}'");
     if($cat_qry->num_rows > 0){
-        $result =$cat_qry->fetch_assoc();
+        $result = $cat_qry->fetch_assoc();
         $title = $result['category'];
         $cat_description = $result['description'];
     }
- $sub_cat_qry = $conn->query("SELECT * FROM sub_categories where md5(id) = '{$_GET['s']}'");
+    $sub_cat_qry = $conn->query("SELECT * FROM sub_categories where md5(id) = '{$_GET['s']}'");
     if($sub_cat_qry->num_rows > 0){
-        $result =$sub_cat_qry->fetch_assoc();
+        $result = $sub_cat_qry->fetch_assoc();
         $sub_title = $result['sub_category'];
         $sub_cat_description = $result['description'];
     }
@@ -27,7 +27,7 @@ if(isset($_GET['c']) && isset($_GET['s'])){
 elseif(isset($_GET['c'])){
     $cat_qry = $conn->query("SELECT * FROM categories where md5(id) = '{$_GET['c']}'");
     if($cat_qry->num_rows > 0){
-        $result =$cat_qry->fetch_assoc();
+        $result = $cat_qry->fetch_assoc();
         $title = $result['category'];
         $cat_description = $result['description'];
     }
@@ -35,7 +35,7 @@ elseif(isset($_GET['c'])){
 elseif(isset($_GET['s'])){
     $sub_cat_qry = $conn->query("SELECT * FROM sub_categories where md5(id) = '{$_GET['s']}'");
     if($sub_cat_qry->num_rows > 0){
-        $result =$sub_cat_qry->fetch_assoc();
+        $result = $sub_cat_qry->fetch_assoc();
         $sub_title = $result['sub_category'];
         $sub_cat_description = $result['description'];
     }
@@ -52,7 +52,7 @@ elseif(isset($_GET['s'])){
 </header>
 <!-- Section-->
 <section class="py-5">
-    <div class="container-fluid row ">
+    <div class="container-fluid row">
         <?php if(isset($_GET['c'])): ?>
         <div class="col-md-3 border-right mb-2 pb-3 bg-white">
             <h3><b>Sub Categories</b></h3>
@@ -68,29 +68,27 @@ elseif(isset($_GET['s'])){
             <hr>
         </div>
         <?php endif; ?>
-        <div class="<?php echo isset($_GET['c'])? 'col-md-9': 'col-md-10 offset-md-1' ?> bg-white">
+        <div class="<?php echo isset($_GET['c']) ? 'col-md-9' : 'col-md-10 offset-md-1' ?> bg-white">
             <div class="container-fluid p-0">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="book-tab" data-toggle="tab" href="#book" role="tab" aria-controls="book" aria-selected="true">Accessories</a>
-                </li>
-                <?php if(isset($_GET['c'])): ?>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="false">Details</a>
-                </li>
-                <?php endif; ?>
-            </ul>
-            <div class="tab-content pt-2">
-                <div class="tab-pane fade show active" id="book">
-                    <?php 
-                            if(isset($_GET['search'])){
-                                echo "<h4 class='text-center'><b>Search Result for '".$_GET['search']."'</b></h4>";
-                            }
-                        ?>
-                    
-                    <div class="row gx-2 gx-lg-2 row-cols-1 row-cols-md-3 row-cols-xl-3">
-                    
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="book-tab" data-toggle="tab" href="#book" role="tab" aria-controls="book" aria-selected="true">Accessories</a>
+                    </li>
+                    <?php if(isset($_GET['c'])): ?>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="details-tab" data-toggle="tab" href="#details" role="tab" aria-controls="details" aria-selected="false">Details</a>
+                    </li>
+                    <?php endif; ?>
+                </ul>
+                <div class="tab-content pt-2">
+                    <div class="tab-pane fade show active" id="book">
                         <?php 
+                        if(isset($_GET['search'])){
+                            echo "<h4 class='text-center'><b>Search Result for '".$_GET['search']."'</b></h4>";
+                        }
+                        ?>
+                        <div class="row gx-2 gx-lg-2">
+                            <?php 
                             $whereData = "";
                             if(isset($_GET['search']))
                                 $whereData = " and (title LIKE '%{$_GET['search']}%' or brand LIKE '%{$_GET['search']}%' or description LIKE '%{$_GET['search']}%')";
@@ -118,56 +116,47 @@ elseif(isset($_GET['s'])){
                                 while($ir = $inventory->fetch_assoc()){
                                     $inv[] = number_format($ir['price']);
                                 }
-                        ?>
-                        <div class="col-md-12 mb-5">
-                            <div class="card product-item">
-                                <!-- Product image-->
-                                <img class="card-img-top w-100" src="<?php echo validate_image($img) ?>" loading="lazy" alt="..." />
-                                <!-- Product details-->
-                                <div class="card-body p-4">
-                                    <div class="">
-                                        <!-- Product name-->
-                                        <h5 class="fw-bolder"><?php echo $row['title'] ?></h5>
-                                        <!-- Product price-->
-                                        <?php foreach($inv as $k=> $v): ?>
-                                            <span><b>Price: </b><?php echo $v ?></span>
-                                        <?php endforeach; ?>
+                            ?>
+                            <div class="col-md-4 mb-4">
+                                <a href=".?p=view_product&id=<?php echo md5($row['id']) ?>" class="card product-item h-100 clickable-card" style="text-decoration: none; color: inherit;">
+                                    <!-- Product image-->
+                                    <img class="card-img-top" src="<?php echo validate_image($img) ?>" loading="lazy" alt="..." />
+                                    <!-- Product details-->
+                                    <div class="card-body p-4">
+                                        <div class="">
+                                            <!-- Product name-->
+                                            <h5 class="fw-bolder"><?php echo $row['title'] ?></h5>
+                                            <!-- Product price-->
+                                            <?php foreach($inv as $k=> $v): ?>
+                                                <span><b>₱ </b><?php echo $v ?></span>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <p class="m-0"><small><?php echo $row['brand'] ?></small></p>
                                     </div>
-                                    <p class="m-0"><small>By: <?php echo $row['brand'] ?></small></p>
-                                </div>
-                                <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center">
-                                        <a class="btn btn-flat btn-primary "   href=".?p=view_product&id=<?php echo md5($row['id']) ?>">View</a>
-                                    </div>
-                                    
-                                </div>
+                                </a>
                             </div>
-                        </div>
-                        <?php endwhile; ?>
-                        <?php 
+                            <?php endwhile; ?>
+                            <?php 
                             if($products->num_rows <= 0){
                                 echo "<h4 class='text-center'><b>No Product Listed.</b></h4>";
                             }
-                        ?>
+                            ?>
+                        </div>
                     </div>
-                </div>
-                <div class="tab-pane fade" id="details">
-                    <h3 class="text-center"><?php echo $title. " Category" ?></h3>
-                    <hr>
-                    <div>
-                        <?php echo isset($cat_description) ? stripslashes(html_entity_decode($cat_description)) : '' ?>
-                    </div>
-                    <h3 class="text-center"><?php echo $sub_title?></h3>
-                    <hr>
-                    <div>
-                        <?php echo isset($sub_cat_description) ? stripslashes(html_entity_decode($sub_cat_description)) : '' ?>
+                    <div class="tab-pane fade" id="details">
+                        <h3 class="text-center"><?php echo $title. " Category" ?></h3>
+                        <hr>
+                        <div>
+                            <?php echo isset($cat_description) ? stripslashes(html_entity_decode($cat_description)) : '' ?>
+                        </div>
+                        <h3 class="text-center"><?php echo $sub_title?></h3>
+                        <hr>
+                        <div>
+                            <?php echo isset($sub_cat_description) ? stripslashes(html_entity_decode($sub_cat_description)) : '' ?>
+                        </div>
                     </div>
                 </div>
             </div>
-                
-            
-
         </div>
-    </div></div>
+    </div>
 </section>

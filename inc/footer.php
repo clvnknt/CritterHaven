@@ -77,7 +77,7 @@ if (in_array($current_url, $fixed_bottom_pages)) {
 <footer class="<?php echo $footer_class; ?>">
     <div class="container">
         <div style="text-align:center">
-            <img src="<?php echo 'images/arachnet_logo.png' ?>" alt="Arachnet Logo" style="width: 50px; height: 50px; border-radius: 50%;">
+            <img src="<?php echo 'public/images/arachnet_logo.png' ?>" alt="Arachnet Logo" style="width: 50px; height: 50px; border-radius: 50%;">
         </div>
         <p class="m-0 text-center text-white">Developed By: Arachnet</p>
         <p class="m-0 text-center text-white">&copy; <?php echo $_settings->info('short_name') ?> 2023</p>
