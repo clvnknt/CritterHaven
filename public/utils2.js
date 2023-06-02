@@ -21,7 +21,7 @@ const addDashboardLinks = (message) => {
 
 
 const appearance = {
-  theme: 'night',
-  labels: 'floating',
-
+  theme: 'stripe'
 };
+
+const elements = stripe.elements({clientSecret, appearance});

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #00bf63;">
             <div class="container-fluid px-4 px-lg-5 ">
                 <button class="navbar-toggler btn btn-sm" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <a class="navbar-brand" href="./">
@@ -10,13 +10,15 @@
                   <div class="input-group">
                     <input class="form-control form-control-sm form " type="search" placeholder="Search" aria-label="Search" name="search"  value="<?php echo isset($_GET['search']) ? $_GET['search'] : "" ?>"  aria-describedby="button-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-success btn-sm m-0" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
+                      <button class="btn btn-outline-success btn-sm m-0" type="submit" id="button-addon2"><i class="fa fa-search text-dark"></i></i></button>
                     </div>
                   </div>
                 </form>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="./">Home</a></li>
+                    <li class="nav-item"><a class="nav-link font-weight-bold text-dark" aria-current="page" href="./">Home</a></li>
+
+
                         <?php 
                         $cat_qry = $conn->query("SELECT * FROM categories where status = 1  limit 3");
                         $count_cats =$conn->query("SELECT * FROM categories where status = 1 ")->num_rows;
@@ -27,20 +29,21 @@
                         <li class="nav-item"><a class="nav-link" aria-current="page" href="./?p=products&c=<?php echo md5($crow['id']) ?>"><?php echo $crow['category'] ?></a></li>
                         
                         <?php else: ?>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" id="navbarDropdown<?php echo $crow['id'] ?>" href="#" role="button" data-toggle="dropdown" aria-expanded="false"><?php echo $crow['category'] ?></a></a>
-                            <ul class="dropdown-menu  p-0" aria-labelledby="navbarDropdown<?php echo $crow['id'] ?>">
-                              <?php while($srow = $sub_qry->fetch_assoc()): ?>
-                                <li><a class="dropdown-item border-bottom" href="./?p=products&c=<?php echo md5($crow['id']) ?>&s=<?php echo md5($srow['id']) ?>"><?php echo $srow['sub_category'] ?></a></li>
-                            <?php endwhile; ?>
-                            </ul>
-                        </li>
+                          <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle font-weight-bold text-dark" id="navbarDropdown<?php echo $crow['id'] ?>" href="#" role="button" data-toggle="dropdown" aria-expanded="false"><?php echo $crow['category'] ?></a>
+    <ul class="dropdown-menu p-0" aria-labelledby="navbarDropdown<?php echo $crow['id'] ?>">
+        <?php while($srow = $sub_qry->fetch_assoc()): ?>
+            <li><a class="dropdown-item border-bottom font-weight-bold text-dark" href="./?p=products&c=<?php echo md5($crow['id']) ?>&s=<?php echo md5($srow['id']) ?>"><?php echo $srow['sub_category'] ?></a></li>
+        <?php endwhile; ?>
+    </ul>
+</li>
                         <?php endif; ?>
                         <?php endwhile; ?>
                         <?php if($count_cats > 3): ?>
                         <li class="nav-item"><a class="nav-link" href="./?p=view_categories">All Categories</a></li>
                         <?php endif; ?>
-                        <li class="nav-item"><a class="nav-link" href="./?p=about">About</a></li>
+                        <li class="nav-item"><a class="nav-link font-weight-bold text-dark" href="./?p=about">About</a></li>
+
                     </ul>
                     <div class="d-flex align-items-center">
                       <?php if(!isset($_SESSION['userdata']['id'])): ?>

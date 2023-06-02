@@ -8,28 +8,45 @@ $bg_image = 'public/images/background.png';
     }
 </style>
 <!-- Header-->
-<header class="bg-dark py-5" id="main-header">
-    <div class="container px-4 px-lg-5 my-5">
+<header class="bg-dark py-5 d-flex align-items-center justify-content-center" id="main-header" style="height:600px">
+    <div class="container px-2 px-lg-4">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">CritterHaven</h1>
+            <style>
+                .logo-img {
+                    max-width: 200px;
+                    height: 200px;
+                }
+            </style>
+            <img src="public/images/ch-logo2.png" alt="Logo" class="mb-3 logo-img">
+            <h1 class="display-3 fw-bolder">CritterHaven</h1>
             <p class="lead fw-normal text-white mb-0">"Pamper your furry friends with CritterHaven's high-quality accessories for dogs and cats. Shop now and show your pets some love!"</p>
             <br>
-            <a href=".?p=products" class="btn btn-primary" role="button">Shop Now!</a>
+            <style>
+    .btn-outline-light:hover {
+        background-color: lime;
+        color: black;
+    }
+</style>
+
+<a href=".?p=products" class="btn btn-outline-light text-white" role="button">Shop Now!</a>
+
+
+
+
         </div>
     </div>
 </header>
 
-<!-- Section-->
 <section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-md-3 row-cols-xl-4">
+    <div class="container px-4 px-lg-5 mt-5 text-center">
+        <div class="row justify-content-center">
             <div class="col-12">
                 <!-- Products header -->
-                <h2 class="fw-bolder">Some Accessories</h2>
+                <h2 class="fw-bolder mb-5">Some Accessories</h2> <!-- Added mb-4 class for margin-bottom -->
             </div>
         </div>
-
-        <div class="row gx-4 gx-lg-5 row-cols-md-3 row-cols-xl-4">
+        
+        <div class="row gx-4 gx-lg-5 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <?php 
                 $products = $conn->query("SELECT * FROM `products` where status = 1 order by rand() limit 8 ");
                 while($row = $products->fetch_assoc()):
@@ -52,7 +69,7 @@ $bg_image = 'public/images/background.png';
             ?>
             <div class="col">
                 <a href=".?p=view_product&id=<?php echo md5($row['id']) ?>" class="card-link" style="text-decoration: none; color: inherit;">
-                    <div class="card product-item">
+                    <div class="card product-item rounded"> <!-- Added rounded class for rounder edges -->
                         <!-- Product image-->
                         <img class="card-img-top w-100 book-cover" src="<?php echo validate_image($img) ?>" alt="..." />
                         <!-- Product details-->
@@ -75,6 +92,9 @@ $bg_image = 'public/images/background.png';
         </div>
     </div>
 </section>
+
+
+
 
 
 

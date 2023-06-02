@@ -63,24 +63,38 @@
 <?php
 $current_url = $_SERVER['REQUEST_URI'];
 $fixed_bottom_pages = array(
-    "/CritterHaven/?p=cart",
     "/CritterHaven/?p=my_account",
     "/CritterHaven/?p=checkout"
 );
 
-$footer_class = "py-3 bg-dark";
+$footer_class = "py-3";
+$footer_style = 'style="background-color: #069450;"';
+if (in_array($current_url, $fixed_bottom_pages)) {
+    $footer_class .= "fixed";
+}
+?>
+
+<?php
+$current_url = $_SERVER['REQUEST_URI'];
+$fixed_bottom_pages = array(
+    "/CritterHaven/?p=cart",
+);
+
+$footer_class = "py-3";
+$footer_style = 'style="background-color: #00bf63;"';
 if (in_array($current_url, $fixed_bottom_pages)) {
     $footer_class .= " fixed-bottom";
 }
 ?>
 
-<footer class="<?php echo $footer_class; ?>">
+
+<footer class="<?php echo $footer_class; ?>" <?php echo $footer_style; ?>">
     <div class="container">
         <div style="text-align:center">
-            <img src="<?php echo 'public/images/arachnet_logo.png' ?>" alt="Arachnet Logo" style="width: 50px; height: 50px; border-radius: 50%;">
+            <img src="<?php echo 'public/images/arachnet_logo2.png' ?>" alt="Arachnet Logo" style="width: 50px; height: 50px; border-radius: 50%;">
         </div>
-        <p class="m-0 text-center text-white">Developed By: Arachnet</p>
-        <p class="m-0 text-center text-white">&copy; <?php echo $_settings->info('short_name') ?> 2023</p>
+        <p class="m-0 text-center text-dark fw-bold">Developed By: Arachnet</p>
+        <p class="m-0 text-center text-dark fw-bold">&copy; <?php echo $_settings->info('short_name') ?> 2023</p>
     </div>
 </footer>
 

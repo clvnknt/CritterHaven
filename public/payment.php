@@ -59,9 +59,9 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Payment</title>
-    <link rel="stylesheet" href="css/base.css" />
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="./utils.js"></script>
+    <link rel="stylesheet" href="css/bases.css" />
+    <script src="utils2.js"></script>
     <script>
 
 
@@ -161,9 +161,9 @@ try {
       });
     </script>
   </head>
-  <body style="background-color:#f7f4f2;">
+  <body style="background-color:white;">
     <main>
-      <h1 style="color: black;"><center>CritterHaven: <Br>Pay With Stripe</center></h1>
+      <h1 style="color: black;"><center>Pay With Stripe</center></h1>
 
       <form id="payment-form" method="POST" >
 
@@ -172,15 +172,15 @@ try {
         <input type="hidden" name="delivery_address" value="<?php echo $delivery_address ?>">
         <input type="hidden" name="paid" value="<?php echo $paid ?>">
 
-        <label style="color: white;" for="payment-element">Contact Information</label>
+        <label style="color: white;" for="payment-element"><b>Contact Information</b></label>
         <div id="link-authentication-element">
         <!--Stripe.js injects the Link Authentication Element-->
         </div>
-        <label style="color: white;" for="payment-element">Billing Address</label>
+        <label style="color: white;" for="payment-element"><b>Billing Address</b></label>
         <div id="address-element">
         <!-- Elements will create form elements here -->
         </div>
-        <label style="color: white;" for="payment-element">Card Information</label>
+        <label style="color: white;" for="payment-element"><b>Card Information</b></label>
         <div id="payment-element">
           <!-- Elements will create input elements here -->
         </div>
@@ -193,7 +193,7 @@ try {
 </button>
 </center>
 <center>
-<a href="../index.php?p=checkout" style="background-color: red; color: white; width: 400px; display: inline-block; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Back</a>
+<a href="../index.php?p=checkout" style="background-color: black; color: white; width: 400px; display: inline-block; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Back</a>
 
 </center>
 

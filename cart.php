@@ -12,7 +12,12 @@ $bg_image = 'public/images/background.png';
     <div class="container">
         <div class="row">
             <div class="col d-flex justify-content-end mb-2">
-                <button class="btn btn-outline-dark btn-flat btn-sm" type="button" id="empty_cart">Empty Cart</button>
+            <button class="btn btn-outline-dark btn-flat btn-sm" type="button" id="empty_cart" style="background-color: white; border-radius: 10px;"
+    onmouseover="this.style.backgroundColor='lime';"
+    onmouseout="this.style.backgroundColor='white';"
+>
+    Empty Cart
+</button>
             </div>
         </div>
         <div class="card rounded-0">
@@ -67,7 +72,10 @@ $bg_image = 'public/images/background.png';
             </div>
         </div>
         <div class="d-flex w-100 justify-content-end">
-            <a href="./?p=checkout" class="btn btn-sm btn-flat btn-dark">Checkout</a>
+        <a href="./?p=checkout" class="btn btn-sm btn-flat" style="background-color: lime; color: black; font-weight: bold; border-radius: 10px;">Checkout</a>
+
+
+
         </div>
     </div>
 </section>
