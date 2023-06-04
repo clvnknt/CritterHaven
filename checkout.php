@@ -4,6 +4,8 @@ $total = 0;
 $qry = $conn->query("SELECT c.*, p.title, i.price, p.id as pid FROM `cart` c INNER JOIN `inventory` i ON i.id = c.inventory_id INNER JOIN products p ON p.id = i.product_id WHERE c.client_id = ".$_settings->userdata('id'));
 
 $productList = ''; // Initialize an empty string to store the list of products
+$firstname = $_settings->userdata('firstname');
+$lastname = $_settings->userdata('lastname');
 
 while ($row = $qry->fetch_assoc()) {
     $quantity = $row['quantity'];
@@ -42,6 +44,8 @@ $bg_image = 'public/images/background.png';
             <h3 class="text-center"><b>Checkout</b></h3>
             <hr class="border-dark">
             <form action="public/payment.php" id="place_order" method="POST">
+                <input type="hidden" name="firstname" value="<?php echo $firstname ?>">
+                <input type="hidden" name="lastname" value="<?php echo $lastname ?>">
                 <input type="hidden" name="amount" value="<?php echo $total ?>">
                 <input type="hidden" name="products" value="<?php echo htmlspecialchars(json_encode($products)) ?>">
                 <input type="hidden" name="payment_method" value="card">

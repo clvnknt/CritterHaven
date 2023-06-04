@@ -71,7 +71,7 @@ $bg_image = 'public/images/background.png';
                     <input type="hidden" name="amount" value="<?php echo $total ?>">
                     <input type="hidden" name="products" value="<?php echo htmlspecialchars(json_encode($products)) ?>">
                     <input type="hidden" name="payment_method" value="card">
-                    <input type="hidden" name="paid" value="0">
+                    <input type="hidden" name="paid" value="1">
 
                     <div class="row row-col-1 justify-content-center">
                         <div class="col-6">

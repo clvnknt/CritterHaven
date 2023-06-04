@@ -100,10 +100,12 @@ $bg_image = 'public/images/background.png';
         var cart_id = _this.closest('.cart-item').find('.cart-qty').attr('data-id')
         var new_total = 0
         start_loader();
-        if($type == 'minus'){
-            qty = parseInt(qty) - 1
-        }else{
-            qty = parseInt(qty) + 1
+        if ($type == 'minus') {
+            if (parseInt(qty) > 1) {
+                qty = parseInt(qty) - 1;
+            }
+        } else {
+            qty = parseInt(qty) + 1;
         }
         price = parseFloat(price)
         // console.log(qty,price)

@@ -2,6 +2,8 @@
 include 'shared.php';
 $amount = $_POST['amount'] * 100;
 $order_type = $_POST['order_type'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
 $paid = 1;
 $delivery_address = $_POST['delivery_address'];
 session_start();
@@ -11,6 +13,7 @@ $products = json_decode($_POST['products'], true);
 $metadata = [
   'order_id' => 'Order ID #231789348SIA',
 ];
+
 
 for ($i = 0; $i < count($products); $i++) {
   $productKey = 'product' . ($i + 1);
@@ -24,6 +27,8 @@ for ($i = 0; $i < count($products); $i++) {
   $metadata['total'] = $amount;
   $metadata['order_type'] = $order_type;
   $metadata['delivery_address'] = $delivery_address;
+  $metadata['firstname'] = $firstname;
+  $metadata['lastname'] = $lastname;
 }
 
 try {
@@ -32,7 +37,7 @@ try {
     'automatic_payment_methods' => ['enabled' => true],
     'amount' => $amount,
     'currency' => $currency,
-    'metadata'=> $metadata
+    'metadata'=> $metadata,
 
   ]);
 } catch (\Stripe\Exception\ApiErrorException $e) {
@@ -155,9 +160,6 @@ try {
         })
 
 
-
-
-
       });
     </script>
   </head>
@@ -178,7 +180,7 @@ try {
         </div>
         <label style="color: white;" for="payment-element"><b>Billing Address</b></label>
         <div id="address-element">
-        <!-- Elements will create form elements here -->
+        
         </div>
         <label style="color: white;" for="payment-element"><b>Card Information</b></label>
         <div id="payment-element">

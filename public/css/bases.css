@@ -82,7 +82,7 @@ a {
   font-family: 'Montserrat', sans-serif; /* Change the font-family to Montserrat */
   display: none; /* hide initially, then show once the first message arrives */
   background-color: #ffffff;
-  color: #c71515;
+  color: #000000;
   padding: 20px;
   margin: 20px 0;
   border-radius: var(--radius);
